@@ -1,0 +1,156 @@
+extends ../bootstrap/_bootstrap
+append styles
+	// Custom styles for this template
+	link(href='css/custom.css', rel='stylesheet')
+	link(href='custom_fonts/fonts/fonts.css', rel='stylesheet', type='text/css')
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+	
+	body
+		.container-fluid.header
+			.row
+				.col-md-12
+					.headings
+						h1 
+							| BEHST
+						p
+							| Biological Enrichment of Hidden Sequence Targets
+							br
+					.info
+						p
+							| Genomic set enrichment analysis enhanced through integration of chromatin long-range interactions
+						p
+							| Chicco D, Bi HS, Reimand J, Hoffman MM. 2017. BEHST – Genomic set enrichment analysis enhanced through integration of chromatin long-range interactions. 
+							i In preparation.
+
+
+		.container
+			.box.behst
+				.row
+					.col-md-12
+						h2 
+							| The free BEHST software package efficiently associates functional enriched Gene Ontology terms to input genomic regions
+						.row
+							.col-md-6
+								.install
+									p
+										| BEHST reads a dataset of genomic regions, and intersects them with the chromatin interactions available in the Hi-C dataset (
+										a(href="https://doi.org/10.1016/j.cell.2014.11.021") Rao et al, Cell, 2014
+										| ). Of these genomic regions, BEHST selects those that are present in the regulatory regions of genes a dataset of principal isoform annotations. We defined these cis-regulatory regions upon the position of their nearest transcription start site of the genes' principal transcripts, plus an upstream and downstream extension. Afterwards, BEHST selects the genes of the resulting partner loci found in gene regulatory regions, and inserts them into
+										a(href="http://biit.cs.ut.ee/gprofiler/")  g:Profiler
+										| . BEHST, finally, produces the list of the most significant Gene Ontology terms detected by g:Profiler.
+									h2
+										| Installation
+									p
+										| BEHST can run on any Linux and Mac computers. You can find the installation instructions on 
+										a(href="https://bitbucket.org/hoffmanlab/behst/") BEHST Bitbucket webpage
+										| .
+
+							.col-md-6
+								img.descript#descript(src="img/BEHSTschematicsketch4AN.png" alt="Image")
+				.row
+					.col-md-12
+						.support
+							h2
+								| Support
+							p
+								| For support of BEHST, please write to the 
+								a(href="http://behst.hoffmanlab.org/behst-l@listserv.utoronto.ca") BEHST-users mailing list
+								| , rather than writing the authors directly. Using the mailing list will get your question answered more quickly. It also allows us to pool knowledge and reduce getting the same inquiries over and over. Questions sent to the mailing list will 
+								receive a higher priority than those sent to us individually.
+								br
+								br
+								|If you do not want to read discussions about other people's use of BEHST, but would like to hear about new releases and other important information, please subscribe to the 
+								a(href="http://behst.hoffmanlab.org/behst-announce-l@listserv.utoronto.ca") BEHST-announce mailing list
+								|  mailing list.
+
+							h2
+								| Source code
+							li
+								a(href="https://bitbucket.org/hoffmanlab/behst/") BEHST code repository on Bitbucket
+							h2
+								| Credits
+
+							p
+								| BEHST was developed by Davide Chicco, Haixin Sarah Bi, Juri Reimand, and Michael M. Hoffman at the 
+								a(href="http://www.hoffmanlab.org/") Hoffman Lab
+								|  of the Princess Margaret Cancer Centre (Toronto, Ontario, Canada). This website was developed by 
+								| Abdellatif Daghrach, Dustin Hu, and Kevin Chan of the 
+								a(href="https://www.pmgenomics.ca/pmgenomics/") Princess Margaret Genomics Center
+								|  (Toronto, Ontario, Canada). 
+
+		.container
+			.box
+				.row
+					.col-md-12
+						h2 
+							| Upload your files					
+				.row
+					.col-md-12
+						form(action="/behst", enctype='multipart/form-data', method='post', onsubmit="showMessage()")
+							h3
+								| Query regions
+							h5.text
+								| File upload/ URL (.bed)  
+								br
+								br
+
+								input(name='file', type='text', value='https://www.pmgenomics.ca/hoffmanlab/proj/behst/data/pressto_LUNG_enhancers.bed', size='90' id='fileName')
+								input(name='upload', type='file', value='Submit' id='files' class='hidden' accept='.bed')
+								label(for='files' id='upload') Upload file
+
+							input.btn.btn-primary.wid(type='submit', value='Submit' id="submit")
+
+							.parameters
+								h4
+									| Optional parameters and files:
+
+								h5
+									| Query extension (bp) 
+
+									input(name='query', type='number', value='24100', min="0", max="30000", step='100')
+
+								h5
+									| Target extension (bp) 
+
+									input(name='target', type='number', value='9400', min='0', max="30000", step='100')
+
+								.files
+
+									h5
+										| Gene annotation (.gtf)
+										br
+										br
+
+										input(name='gene', type='text', value="http://behst.hoffmanlab.org/data/gencode.v19.annotation_withproteinids.gtf",
+										size="90", id='geneName')
+										input(name='geneUpload', type='file', value='Submit' id='genes' class='hidden' accept='.gtf')
+										label(for="genes" id='onHover') Upload file
+
+									h5
+										| Chromosomal interactions (.hiccups)
+										br
+										br
+
+										input(name='chromosomal', type='text', value='http://behst.hoffmanlab.org/data/hic_8celltypes.hiccups',
+										size="90", id='chromosomalName')
+										input(name="chromosomalUpload", type='file' value='Submit', id='chromosomals', class='hidden', accept='.hiccups')
+										label(for='chromosomals') Upload file
+
+									h5
+										| Principal transcripts (.bed)
+										br
+										br
+
+										input(name='principal', type='text', value="http://behst.hoffmanlab.org/data/appris_data_principal.bed",
+										size="90", id='principalName')
+										input(name="principalUpload", type='file', value='Submit', id='principals', class='hidden' accept='.bed')
+										label(for='principals') Upload file
+											
+									input.btn.btn-danger.wid(type='reset', value='Reset')
+
+									p
+										span#displayMessage
+
+	script(src='js/upload.js')
+	
+

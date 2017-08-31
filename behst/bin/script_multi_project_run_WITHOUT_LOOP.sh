@@ -1,0 +1,174 @@
+#!/bin/bash
+#
+#$ -cwd
+#$ -S /bin/bash
+#
+set -o nounset -o pipefail -o errexit
+set -o xtrace
+
+#module load bedtools python
+
+startTime=`date +%s`
+
+INPUT_FILE=$1
+
+if [ ! -f $INPUT_FILE ]; then
+    echo "(script_multi_project_run.sh) File $INPUT_FILE not found!\n The program will stop"
+    exit 1
+fi
+
+filename=$(basename "$INPUT_FILE")
+filename="${filename%.*}"
+filename=$filename".bed"
+INPUT_FILE_NEW=${filename//./_}
+
+millisec_time_number=$(date +%s)
+millisec_time_number=$(shuf -i1-1000000 -n1)
+
+
+TEMP_OUTPUT_FILE=$2
+if [ $TEMP_OUTPUT_FILE -eq "-1" ]
+  then
+    echo "No 2nd argument supplied\n"
+    TEMP_OUTPUT_FILE="../temp/temp_output_file_rand"$millisec_time_number
+  else    
+    echo "File $TEMP_OUTPUT_FILE supplied as 2nd argument "
+fi
+
+
+OUTPUT_FILE="../results/OUTPUT_"$INPUT_FILE_NEW"_logPvalues_top_GO_terms_rand"$millisec_time_number
+
+TEMP_OUTPUT_FILE2=$TEMP_OUTPUT_FILE"_vol2"
+# sh project.sh $INPUT_FILE 100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 3100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 3100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 6100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 6100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 9100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 9100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 12100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 12100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 15100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 15100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 18100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 18100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 21100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 21100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 24100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 24100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+ sh project.sh $INPUT_FILE 27100 100  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 3200  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 6300  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 9400  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 12500  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 15600  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 18700  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 21800  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 24900  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+# sh project.sh $INPUT_FILE 27100 28000  >> $TEMP_OUTPUT_FILE 2>> $TEMP_OUTPUT_FILE
+
+## ORIGINAL
+grep "GO:[0-9]" $TEMP_OUTPUT_FILE > $TEMP_OUTPUT_FILE2 || true
+#grep "\#\#\#$" $TEMP_OUTPUT_FILE > $OUTPUT_FILE || true
+
+# grep_result=$(grep "GO:[0-9]" $TEMP_OUTPUT_FILE || true)
+# 
+# if [[ $grep_result== true ]]; then
+#     echo "$grep_result" > $OUTPUT_FILE
+#     head $OUTPUT_FILE
+#   else
+#     echo "The grep GO: command returned false"
+# fi
+
+sed -i '1s/^/p_value	GO_term_ID	GO_subontology	GO_term_name	ADJUST_COORD	EXTENSION\n/' $TEMP_OUTPUT_FILE2
+
+sed "s/[']//g" $TEMP_OUTPUT_FILE2 > $OUTPUT_FILE
+
+head $OUTPUT_FILE
+
+#rm $TEMP_OUTPUT_FILE
+#rm $TEMP_OUTPUT_FILE2
+
+# Rscript pvaluesPlotGenerator.r $OUTPUT_FILE
+lower_extreme_limit=-10
+
+# average_chrom_region_loci_distance=$(Rscript chromRegionLength.r $INPUT_FILE)
+
+Rscript plot_heatmaps.r $OUTPUT_FILE $lower_extreme_limit
+
+endTime=`date +%s`
+runtime=$((endTime-startTime))
+printf 'project.sh Total running time: %dhours,  %dminutes, %dseconds\n' $(($runtime/3600)) $(($runtime%3600/60)) $(($runtime%60))

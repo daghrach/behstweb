@@ -1,0 +1,11 @@
+Rscript chromRegionLength.r ../data/vista_LIMB_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_HEART_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_EYE_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_FOREBRAIN_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_HINDBRAIN_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_Human_BRAIN_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_MIDBRAIN_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_LIMB_sorted.bed 
+Rscript chromRegionLength.r ../data/vista_NOSE_sorted.bed 
+
+Rscript chromRegionLength.r ../data/vista_Human_sorted.bed 
