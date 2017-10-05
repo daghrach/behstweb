@@ -1,13 +1,17 @@
 BEHST Webpage
 Behst is a web tool for gene set enrichment an analysis enhanced through integration of chromatin long-range interactions. The user uploads a (.bed) file for analysis and the optional parameters. The application will then output a list of the most significant Gene Ontology terms and the user will be redirected to g:Profiler site, with the terms in the query. It is currently running at https://www.pmgenomics.ca/behst/.
+
 Software
 NodeJs Node modules (run the command “npm install” in the root directory of the application) Behst (https://bitbucket.org/hoffmanlab/behst follow the instructions to download, but the files should already be in the application)
+
 Before you Begin
 Read up on docker as we use some terminology of it in the documentation of Behst. https://docs.docker.com/get-started/
 Useful Commands in Production
+
 The app is in a docker container hosted at UHN’s Merry server. Here is a list of commands you may find useful.
 To start the container: docker run -v /data/web/data_behst:/app/behst/uploads --name behst -p 4000:3000 behst:latest
 If you do not need to make a new image, then use the commands: docker start (to start the container) docker stop (to stop the container)
+
 Making Changes to the Application (locally)
 The files for the application are found under (/coop2/coop_S17/behst) in mordor. To launch the application locally type “node app.js” in the root directory.
 To launch the application in a docker container with the given dockerfile, use the following commands
