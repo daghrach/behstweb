@@ -1,5 +1,5 @@
 BEHST Webpage
-Behst is a web tool for gene set enrichment an analysis enhanced through integration of chromatin long-range interactions. The user uploads a (.bed) file for analysis and the optional parameters. The application will then output a list of the most significant Gene Ontology terms and the user will be redirected to g:Profiler site, with the terms in the query. It is currently running at https://www.pmgenomics.ca/behst/.
+Behst is a web tool for gene set enrichment an analysis enhanced through integration of chromatin long-range interactions. The user uploads a (.bed) file for analysis and the optional parameters. The application will then output a list of the most significant Gene Ontology terms and the user will be redirected to g:Profiler site, with the terms in the query. It is currently running at http://behst.hoffmanlab.org/behst
 
 Software
 NodeJs Node modules (run the command “npm install” in the root directory of the application) Behst (https://bitbucket.org/hoffmanlab/behst follow the instructions to download, but the files should already be in the application)
@@ -37,13 +37,9 @@ The BEHST webpage backend requires the following libraries:
 Express
 
 fs
-
 child_process
-
 http
-
 request
-
 encodeQueryData
 
 This function encodes a URI using &s This function is no longer used.
